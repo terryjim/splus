@@ -14,7 +14,7 @@ public class SplusApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SplusApplication.class, args);
 	}
-	 @RequestMapping("/")
+	 @RequestMapping("/login")
 		public String hello(Locale locale, Model model) {
 			/*model.addAttribute("greeting", "Hello!");
 
@@ -23,6 +23,6 @@ public class SplusApplication {
 			String formattedDate = dateFormat.format(date);
 			model.addAttribute("currentTime", formattedDate);
 */
-			return "index";
+			return "login";
 		}
 }
