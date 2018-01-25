@@ -3,6 +3,11 @@ server:
  tomcat:
   uri-encoding: UTF-8
 spring:
+  thymeleaf:
+    cache: false
+    mode: HTML5
+    encoding: UTF-8
+    content-type: text/html
   datasource:
   #zeroDateTimeBehavior=convertToNull\u89e3\u51b3\u6570\u636e\u8868\u4e2d\u6709\u8bb0\u5f55\u7684time\u5b57\u6bb5\uff08\u5c5e\u6027\u4e3atimestamp\uff09\u503c\u4e3a\uff1a\u201c0000-00-00 00:00:00\u201d\u7684\u5f02\u5e38\u95ee\u9898
     url: jdbc:sqlserver://120.25.224.175:1433;DatabaseName=gl_Test  
