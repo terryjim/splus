@@ -13,11 +13,11 @@ import org.springframework.security.core.userdetails.UserDetails;
  * @author terry
  *
  */
-public class SecurityUser extends User implements UserDetails
+public class SecurityUser extends Users implements UserDetails
 {
 
     private static final long serialVersionUID = 1L;
-    public SecurityUser(User user) {
+    public SecurityUser(Users user) {
         if(user != null)
         {
             this.setId(user.getId());
@@ -30,10 +30,10 @@ public class SecurityUser extends User implements UserDetails
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        List<Role> roles = this.getRoles();
+        List<Roles> roles = this.getRoles();
         if(roles != null)
         {
-            for (Role role : roles) {
+            for (Roles role : roles) {
                 SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getName());
                 authorities.add(authority);
             }

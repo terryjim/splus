@@ -18,14 +18,14 @@ import lombok.ToString;
 
 
 @Entity
-@Table(name = "role")
+@Table(name = "roles")
 @JsonInclude(value=Include.NON_NULL)
 @JsonPropertyOrder(alphabetic=true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(callSuper=true, includeFieldNames=true) 
-public class Role implements java.io.Serializable{
+public class Roles implements java.io.Serializable{
     /**
 	 * 
 	 */

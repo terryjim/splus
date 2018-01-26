@@ -10,14 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  */
 @Controller
-@RequestMapping("/")
 public class Index {
-	@GetMapping("")
+	@RequestMapping("/")
 	public String home() {			
 		return "index";
-	}
-	
-	@GetMapping("login")
+	}	
+	@RequestMapping("/login")
 	public String login() {			
 		return "login";
 	}

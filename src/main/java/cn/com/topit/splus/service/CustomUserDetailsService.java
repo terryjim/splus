@@ -6,9 +6,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import cn.com.topit.splus.dao.UserRepository;
+import cn.com.topit.splus.dao.UsersRepository;
 import cn.com.topit.splus.entity.SecurityUser;
-import cn.com.topit.splus.entity.User;
+import cn.com.topit.splus.entity.Users;
 
 /**
  * https://github.com/chenfromsz/spring-boot-security
@@ -18,13 +18,14 @@ import cn.com.topit.splus.entity.User;
 @Component
 public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
-    private UserRepository userRepository;
+    private UsersRepository usersRepository;
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        User user = userRepository.findByName(userName);
+        Users user = usersRepository.findByCode(userName);
+        System.out.println(user);
         if (user == null) {
-            throw new UsernameNotFoundException("UserName " + userName + " not found");
+            throw new UsernameNotFoundException("用户名 " + userName + "不存在");
         }
         return new SecurityUser(user);
     }

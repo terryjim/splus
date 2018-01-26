@@ -32,7 +32,6 @@ import lombok.ToString;
  * @author terry
  */
 @Entity
-@Table(name = "user")
 @JsonInclude(value=Include.NON_NULL)
 @JsonPropertyOrder(alphabetic=true)
 @JsonIgnoreProperties({"password","salt"})
@@ -41,7 +40,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(callSuper=true, includeFieldNames=true) 
-public class User implements java.io.Serializable{
+public class Users implements java.io.Serializable{
 	private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -67,7 +66,7 @@ public class User implements java.io.Serializable{
     @JoinTable(name = "user_role",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")})
-    private List<Role> roles;
+    private List<Roles> roles;
 
    
 }
