@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class Index {
-	@RequestMapping("/")
+	@RequestMapping(value= {"/","/index"})
 	public String home() {			
 		return "index";
 	}	
 	@RequestMapping("/login")
 	public String login() {			
 		return "login";
+	}
+	@RequestMapping("/layout")
+	public String layout() {			
+		return "layout";
 	}
 }

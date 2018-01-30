@@ -4,6 +4,7 @@ server:
   uri-encoding: UTF-8
 spring:
   thymeleaf:
+  #开发时关闭缓存,不然没法看到实时页面
     cache: false
     mode: HTML5
     encoding: UTF-8

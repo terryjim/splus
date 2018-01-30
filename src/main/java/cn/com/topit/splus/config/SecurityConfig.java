@@ -33,8 +33,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		// 任何请求,登录后可以访问
 		// defaultSuccessUrl登录成功后默认跳转到"/"
-		http.authorizeRequests().antMatchers("/css/**").permitAll().anyRequest().authenticated().antMatchers("/**")
-				.hasRole("USER").and().formLogin().loginPage("/login").defaultSuccessUrl("/").permitAll();
+		http.authorizeRequests().antMatchers("/login").permitAll().antMatchers("/logout").permitAll()
+				.antMatchers("/img/**").permitAll().antMatchers("/js/**").permitAll().antMatchers("/css/**").permitAll()
+				.antMatchers("/bootstrap/**").permitAll().antMatchers("/fonts/**").permitAll()
+				.antMatchers("/favicon.ico").permitAll().anyRequest().authenticated().and().formLogin()
+				.loginPage("/login").defaultSuccessUrl("/index");
 	}
 
 	@Autowired
@@ -42,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// 指定密码加密所使用的加密器为passwordEncoder()
 		// 需要将密码加密后写入数据库
 		auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());
-		auth.eraseCredentials(false);
+		// auth.eraseCredentials(false);
 	}
 
 	/**
@@ -50,15 +53,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 * 
 	 * @return
 	 */
-	/*@Bean
+	@Bean
 	public Md5PasswordEncoder passwordEncoder() {
 		return new Md5PasswordEncoder();
 
-	}*/
-	   @Bean  
-	    public BCryptPasswordEncoder passwordEncoder() {  
-	        return new BCryptPasswordEncoder();  
-	    }  
+	}
+	/*
+	 * @Bean public BCryptPasswordEncoder passwordEncoder() { return new
+	 * BCryptPasswordEncoder(); }
+	 */
 	/*
 	 * @Autowired public void configureGlobal(AuthenticationManagerBuilder auth)
 	 * throws Exception { auth.inMemoryAuthentication()
